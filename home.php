@@ -17,6 +17,9 @@ echo '</pre>';
 echo '<pre>';
 var_dump($resultado);
 echo '</pre>';
+if(false){
+    header('Location: login.php');
+}
 ?>
 
 <head>
@@ -29,6 +32,11 @@ echo '</pre>';
 </head>
 
 <body>
+    <h2>Bienvenido: <?php echo $resultado[4]; ?></h2>
+    <div class="container-fluid">
+        <button type="button" class="btn btn-primary">Buscar</button>
+        <button type="button" class="btn btn-primary">Registrar</button>
+    </div>
 </body>
 
 </html>
