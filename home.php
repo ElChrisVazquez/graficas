@@ -3,23 +3,27 @@
 <?php
 
 include_once('conexion.php');
-
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-$res = $conn->query("Select * from doctor");
-$resultado = $res->fetch_row();
+session_start();
 
 echo '<pre>';
 var_dump($_POST);
 echo '</pre>';
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$res = $conn->query("SELECT * FROM Medico WHERE usuario = '" . $_POST['user'] . "' AND contrasena = '" . $_POST['pass'] . "' LIMIT 1");
+$resultado = $res->fetch_array();
+
+if (sizeof($resultado) == 0) {
+    header('Location: login.php');
+}
 echo '<pre>';
 var_dump($resultado);
 echo '</pre>';
-if(false){
-    header('Location: login.php');
-}
+
+
 ?>
 
 <head>
@@ -32,7 +36,7 @@ if(false){
 </head>
 
 <body>
-    <h2>Bienvenido: <?php echo $resultado[4]; ?></h2>
+    <h2>Bienvenido: <?php echo 'Dr. '.$resultado[1].' '.$resultado[2]; ?></h2>
     <div class="container-fluid">
         <button type="button" class="btn btn-primary">Buscar</button>
         <button type="button" class="btn btn-primary">Registrar</button>
