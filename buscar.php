@@ -11,7 +11,6 @@ if (sizeof($_POST) > 0) {
     $resultadoGlu = $resGlu->fetch_all();
     $resHemo = $conn->query("SELECT * FROM Hemoglobina WHERE id_paciente = " . $resultado[0] . "");
     $resultadoHemo = $resHemo->fetch_all();
-    
 }
 ?>
 
@@ -38,8 +37,8 @@ if (sizeof($_POST) > 0) {
 
             data.addRows([
                 <?php
-                for ($i=0; $i < sizeof($resultadoGlu); $i++) {
-                    echo "[".($i+1) .", ".$resultadoGlu[$i][1]."],";
+                for ($i = 0; $i < sizeof($resultadoGlu); $i++) {
+                    echo "[" . ($i + 1) . ", " . $resultadoGlu[$i][1] . "],";
                 }
                 ?>
             ]);
@@ -72,8 +71,8 @@ if (sizeof($_POST) > 0) {
 
             data.addRows([
                 <?php
-                for ($i=0; $i < sizeof($resultadoHemo); $i++) {
-                    echo "[".($i+1) .", ".$resultadoHemo[$i][1]."],";
+                for ($i = 0; $i < sizeof($resultadoHemo); $i++) {
+                    echo "[" . ($i + 1) . ", " . $resultadoHemo[$i][1] . "],";
                 }
                 ?>
             ]);
@@ -100,7 +99,13 @@ if (sizeof($_POST) > 0) {
         <input class="form-control" type="text" name="poliza">
         <button type="submit" class="btn btn-primary">Buscar</button>
         <br>
-        <h3><?php echo "Nombre del paciente: ".$resultado[2]." ".$resultado[3]." ".$resultado[4] ?></h3>
+
+        <?php
+        if (sizeof($_POST) > 0) {
+            echo "<h3>Nombre del paciente: " . $resultado[2] . " " . $resultado[3] . " " . $resultado[4] . " </h3>";
+        }
+        ?>
+
         <div id="glucosa" style="width: 900px; height: 500px"></div>
         <div id="hemoglobina" style="width: 900px; height: 500px"></div>
     </form>
