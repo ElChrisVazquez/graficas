@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-
+<?php
+echo '<pre>';
+var_dump($_POST);
+echo '</pre>';
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

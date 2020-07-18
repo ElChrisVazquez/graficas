@@ -9,6 +9,7 @@ CREATE TABLE Medico (
 );
 CREATE TABLE Paciente(
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    poliza VARCHAR(50) NOT NULL,
     nombre varchar(50) NOT NULL,
     paterno varchar(50) NOT NULL,
     materno varchar(50) NOT NULL,
@@ -44,6 +45,7 @@ VALUES(
         '1234'
     );
 INSERT INTO Paciente(
+        poliza,
         nombre,
         paterno,
         materno,
@@ -53,6 +55,7 @@ INSERT INTO Paciente(
         fecha_nacimiento
     )
 VALUES (
+        '1234',
         'Chris',
         'Vazquez',
         'Valdivia',
@@ -71,7 +74,6 @@ INSERT INTO Hemoglobina(resultado, id_paciente)
 VALUES(12.0, 1);
 INSERT INTO Hemoglobina(resultado, id_paciente)
 VALUES(14.5, 1);
-
 INSERT INTO Glucosa(resultado, id_paciente)
 VALUES(3.9, 1);
 INSERT INTO Glucosa(resultado, id_paciente)
